@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Template &bull; templating the jQuery way</title>
+<link href="docs/style.css" rel="stylesheet">
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js"></script>
+<script src="docs/code_highlighter.js"></script>
+<script src="docs/syntax.js"></script>
+<script src="src/template.js"></script>
+<script>
+var Feature, Word;
+
+$(function() {
+  Feature = Template($("#feature"), function(title, text) {
+    this.find("h3").text(title)
+    this.find("p").text(text)
+  })
+
+  Word = Template("<span>")
+
+  $("#features").append(
+    new Feature("Amazing", "Sounds cool!"),
+    new Feature("Brilliant", "Ok ok..."),
+    new Feature("Capital", "...capital?"),
+    new Word().text("And "),
+    new Word().text("some "),
+    new Word().text("more "),
+    new Word().text("words "),
+    new Word().text("here.")
+  )
+})
+</script>
+</head>
+<body>
+<div id="container">
+  <h1>Template</h1>
+  <p class="subtitle">Templating the jQuery way</p>
+  <p class="beware">Beware: name and functionality are likely to change!</p>
+
+  <div id="features"></div>
+
+  <h2>Example</h2>
+
+  <p>The above was generated with:</p>
+
+  <pre><code class="javascript">Feature = Template($("#feature"), function(title, text) {
+  this.find("h3").text(title)
+  this.find("p").text(text)
+})
+
+Word = Template("&lt;span&gt;")
+
+$("#features").append(
+  new Feature("Amazing", "Sounds cool!"),
+  new Feature("Brilliant", "Ok ok..."),
+  new Feature("Capital", "...capital?")
+  new Word().text("And "),
+  new Word().text("some "),
+  new Word().text("more "),
+  new Word().text("words "),
+  new Word().text("here.")
+)</code></pre>
+</div>
+<div id="fork-me"><a href="http://github.com/benpickles/template">Fork me on GitHub</a></div>
+<div id="templates">
+  <div id="feature">
+    <h3></h3>
+    <p></p>
+  </div>
+</div>
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+try {
+var pageTracker = _gat._getTracker("UA-117680-14");
+pageTracker._trackPageview();
+} catch(err) {}</script>
+</body>
+</html>
